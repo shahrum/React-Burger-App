@@ -6,7 +6,6 @@ import cls from './BurgerIngredient.css';
 class BurgerIngredient extends Component {
   render() {
     let ingredient = null;
-    console.log('ingredient: ', ingredient);
 
     switch (this.props.type) {
       case ('bread-bottom'):
@@ -35,7 +34,6 @@ class BurgerIngredient extends Component {
       default:
         ingredient = null;
     }
-    console.log('after', ingredient);
     return ingredient;
   }
 };
