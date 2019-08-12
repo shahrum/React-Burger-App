@@ -1,11 +1,25 @@
 import React from 'react';
 import cls from './Order.css';
+import { catchClause } from '@babel/types';
 
-const order = (props) => (
-    <div className={cls.Order}>
-        <p>Ingredients: Salad (1)</p>
-        <p>Price: <strong>USD 4.5</strong></p>
-    </div>
-);
+const order = (props) => {
+    const ingredients = [];
+    for (let ingredientName in props.ingredients) {
+        ingredients.push({name: ingredientName, amount: props.ingredients[ingredientName]})
+    }
+    const ingredientOutput = ingredients.map(ig => {
+        return <span style={{
+            textTransform: 'capitalize',
+            display:'inline-block',
+            margin: '0 8px',
+            border: '1px solid #ccc',
+            padding: '1px 4px'
+        }} key={ig.name}>{ig.name} ({ig.amount}) </span>
+    })
+    return (<div className={cls.Order}>
+        <p>Ingredients: {ingredientOutput}</p>
+        <p>Price: <strong>AUD {(+props.price).toFixed(2)}</strong></p>
+    </div>);
+};
 
 export default order;

@@ -19,6 +19,7 @@ class Orders extends Component {
                     id: key
                 });
             }
+            console.log('fetchedOrders: ', fetchedOrders);
             this.setState({loading: false, orders: fetchedOrders})
         }).catch(err => {
             this.setState({loading: false})
@@ -27,8 +28,9 @@ class Orders extends Component {
     render () {
         return (
             <div>
-                <Order />
-                <Order />
+                {this.state.orders.map(order => (
+                    <Order price={order.price} ingredients={order.ingredients} key={order.id} />
+                ))}
             </div>
         )
     };
