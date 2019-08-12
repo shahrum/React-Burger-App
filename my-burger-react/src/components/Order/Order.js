@@ -1,6 +1,5 @@
 import React from 'react';
 import cls from './Order.css';
-import { catchClause } from '@babel/types';
 
 const order = (props) => {
     const ingredients = [];
